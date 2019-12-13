@@ -56,3 +56,5 @@ libraries/tools/kotlin-source-map-loader/lib/
 local.properties
 
 *.o
+/cellar-app/target/
+/cellar-driver/target/
