@@ -4,7 +4,7 @@ HEADERS = ../../target/headers/Dht11Driver.h adafruit/common_dht_read.h adafruit
 FILES = adafruit/common_dht_read.c adafruit/Raspberry_Pi_2/pi_2_mmio.c adafruit/Raspberry_Pi_2/pi_2_dht_read.c Dht11Driver.c
 OUT = libdht11
 
-default: library
+default: library move
 
 program: Dht11Driver.c
 	gcc -Wall $(INCLUDES) $(HEADERS) $(FILES) -o $(OUT)
