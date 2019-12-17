@@ -15,8 +15,8 @@
     </properties>
 
     <modules>
-        <module>cellar-app</module>
         <module>cellar-driver</module>
+        <module>cellar-app</module>
     </modules>
 
 

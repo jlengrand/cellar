@@ -3,15 +3,15 @@
 #include <stdint.h>
 #include <unistd.h>
 #include <jni.h>
-#include "../java/Dht11Driver.h"
+#include "../../../target/headers/nl_lengrand_cellar_Dht11Driver.h"
 #include "adafruit/Raspberry_Pi_2/pi_2_dht_read.h"
 
-JNIEXPORT void JNICALL Java_Dht11Driver_sayHello(JNIEnv *env, jobject thisObj) {
+JNIEXPORT void JNICALL Java_nl_lengrand_cellar_Dht11Driver_sayHello(JNIEnv *env, jobject thisObj) {
    printf("Hello JNI!\n");
    return;
 }
 
-JNIEXPORT jfloatArray JNICALL Java_Dht11Driver_getTemperatureAndHumidity(JNIEnv *env, jobject thisObj){
+JNIEXPORT jfloatArray JNICALL Java_nl_lengrand_cellar_Dht11Driver_getTemperatureAndHumidity(JNIEnv *env, jobject thisObj){
     float humidity = 0, temperature = 0;
     int sensor = 11; // Make those dynamic one day?
     int pin = 4; // Make those dynamic one day?

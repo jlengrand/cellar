@@ -30,10 +30,11 @@ public class CellarResource {
         return createResponse(cellarProvider.getSensorValues());
     }
 
-    private JsonObject createResponse(SensorValues values) {
+    private JsonObject createResponse(SensorValue value) {
         return JSON.createObjectBuilder()
-                .add("test", "test")
+                .add("temperature", value.getTemperature())
+                .add("humidity", value.getHumidity())
+                .add("reading", value.getReading().toString())
                 .build();
     }
-
 }

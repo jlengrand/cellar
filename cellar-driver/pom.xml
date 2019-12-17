@@ -19,7 +19,7 @@
                 <configuration>
                     <compilerArgs>
                         <arg>-h</arg>
-                        <arg>target/headers</arg>
+                        <arg>${project.basedir}/target/headers</arg>
                     </compilerArgs>
                 </configuration>
             </plugin>
@@ -45,7 +45,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>TestLib</mainClass>
+                            <mainClass>nl.lengrand.cellar.TestLib</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

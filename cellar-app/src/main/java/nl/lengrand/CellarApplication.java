@@ -24,15 +24,12 @@ import javax.ws.rs.core.Application;
 
 import io.helidon.common.CollectionsHelper;
 
-/**
- * Simple Application that produces a greeting message.
- */
 @ApplicationScoped
 @ApplicationPath("/")
-public class GreetApplication extends Application {
+public class CellarApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        return CollectionsHelper.setOf(GreetResource.class);
+        return CollectionsHelper.setOf(GreetResource.class, CellarResource.class);
     }
 }

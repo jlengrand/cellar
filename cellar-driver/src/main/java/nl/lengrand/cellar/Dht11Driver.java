@@ -1,3 +1,5 @@
+package nl.lengrand.cellar;
+
 public class Dht11Driver {
 
     static {
