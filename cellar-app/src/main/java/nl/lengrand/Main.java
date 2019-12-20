@@ -27,6 +27,7 @@ import io.helidon.microprofile.server.Server;
  */
 public final class Main {
 
+    private static CellarMonitor monitor = new CellarMonitor();
     /**
      * Cannot be instantiated.
      */
@@ -38,13 +39,15 @@ public final class Main {
      * @throws IOException if there are problems reading logging properties
      */
     public static void main(final String[] args) throws IOException {
-        // load logging configuration
         setupLogging();
-
-        // start the server
         Server server = startServer();
+        startMonitoring();
 
         System.out.println("http://localhost:" + server.port() + "/greet");
+    }
+
+    static void startMonitoring(){
+        monitor.startMonitoring();
     }
 
     /**
