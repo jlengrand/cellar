@@ -33,3 +33,5 @@ ping raspberrypi.local
 
 http://hirt.se/blog/?p=1116
 https://github.com/fauna/faunadb-jvm/blob/master/docs/java.md
+
+Stack Overflow Question : https://iot.stackexchange.com/questions/4662/in-what-form-should-i-store-data-in-the-cloud-for-a-single-device
