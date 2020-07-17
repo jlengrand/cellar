@@ -11,7 +11,7 @@ public class CellarMonitor {
 
     // From config
     private static final long START = 0;
-    private static final long SPAN = 3;
+    private static final long SPAN = 30;
     private static final TimeUnit UNIT = TimeUnit.MINUTES;
 
     private ScheduledFuture monitorHandle;
@@ -31,7 +31,7 @@ public class CellarMonitor {
     };
 
     public void startMonitoring(){
-        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, TimeUnit.MINUTES);
+        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, UNIT);
     }
 
     public void stopMonitoring(){

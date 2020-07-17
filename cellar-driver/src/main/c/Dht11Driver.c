@@ -26,4 +26,5 @@ JNIEXPORT jfloatArray JNICALL Java_nl_lengrand_cellar_Dht11Driver_getTemperature
 
     (*env)->SetFloatArrayRegion(env, outJNIArray, 0, 2, (const jfloat*)values);
     return outJNIArray;
+    
 }
