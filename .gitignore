@@ -58,3 +58,4 @@ local.properties
 *.o
 /cellar-app/target/
 /cellar-driver/target/
+/.idea/

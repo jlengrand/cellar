@@ -1,4 +1,4 @@
-# Robottle
+# Cellar
 
 WIP: Don't expect any structure in there. As of now it's a collection of tryouts without particular shape
 
@@ -28,10 +28,14 @@ https://github.com/cory-johannsen/gradle-jni-example
 pi/robottle
 raspberrypi
 
-ping raspberrypi.local
+ssh pi@raspberrypi.local
 
 
 http://hirt.se/blog/?p=1116
 https://github.com/fauna/faunadb-jvm/blob/master/docs/java.md
 
 Stack Overflow Question : https://iot.stackexchange.com/questions/4662/in-what-form-should-i-store-data-in-the-cloud-for-a-single-device
+
+# To run : 
+
+$ mvn clean package
