@@ -43,7 +43,7 @@ public final class Main {
         Server server = startServer();
         startMonitoring();
 
-        System.out.println("http://localhost:" + server.port() + "/greet");
+        System.out.println("http://localhost:" + server.port());
     }
 
     static void startMonitoring(){
