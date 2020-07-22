@@ -21,13 +21,16 @@ import java.io.InputStream;
 import java.util.logging.LogManager;
 
 import io.helidon.microprofile.server.Server;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  * The application main class.
  */
 public final class Main {
 
-    private static CellarMonitor monitor = new CellarMonitor();
+    @ConfigProperty(name = "monitoring.enabled", defaultValue = "true")
+    private static boolean monitoringEnabled;
+
     /**
      * Cannot be instantiated.
      */
@@ -41,12 +44,16 @@ public final class Main {
     public static void main(final String[] args) throws IOException {
         setupLogging();
         Server server = startServer();
-        startMonitoring();
 
-        System.out.println("http://localhost:" + server.port());
+        if(monitoringEnabled) {
+            System.out.println("Monitoring enabled by config. Starting up");
+            startMonitoring();
+        }
+        else System.out.println("Monitoring disabled by config");
     }
 
     static void startMonitoring(){
+        CellarMonitor monitor = new CellarMonitor();
         monitor.startMonitoring();
     }
 
