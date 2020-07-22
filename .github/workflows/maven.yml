@@ -26,3 +26,7 @@ jobs:
         with:
           name: Package
           path: staging
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Package
+          path: staging
