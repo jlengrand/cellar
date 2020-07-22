@@ -13,7 +13,7 @@ jobs:
         with:
           java-version: 11
       - name: maven-settings
-        uses: s4u/maven-settings-action@v2
+        uses: whelk-io/maven-settings-xml-action@v10
         with:
           servers: '[{"id": "github", "username": "jlengrand", "password": "${GITHUB_TOKEN}"}]'
           repositories: '[{ "id": "central", "url": "https://repo1.maven.org/maven2" }, { "id": "github", "url": "https://maven.pkg.github.com/jlengrand/cellar-driver" }]'  
