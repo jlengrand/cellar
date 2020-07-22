@@ -119,7 +119,7 @@
         <repository>
             <id>github</id>
             <name>GitHub Packages</name>
-            <url>https://maven.pkg.github.com/jlengrand/cellar-driver</url>
+            <url>https://maven.pkg.github.com/jlengrand/cellar</url>
         </repository>
     </distributionManagement>
 </project>
