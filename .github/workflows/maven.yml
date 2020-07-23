@@ -14,13 +14,11 @@ jobs:
           java-version: 11
       - name: maven-settings
         uses: whelk-io/maven-settings-xml-action@v10
-        env:
-          PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
           servers: '[{"id": "github", "username": "jlengrand", "password": "${{ secrets.GITHUB_TOKEN }}"}]'
           repositories: '[{ "id": "central2", "url": "https://repo1.maven.org/maven2" }, { "id": "github", "url": "https://maven.pkg.github.com/jlengrand/cellar-driver" }]'
       - name: Build with Maven
-        run: cat ~/.m2/settings.xml; mvn -B deploy #mvn -B package --file pom.xml
+        run: cat ~/.m2/settings.xml; mvn -B deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: mkdir staging && cp cellar-app/target/*-with-dependencies.jar staging
