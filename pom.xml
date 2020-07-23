@@ -18,5 +18,12 @@
         <module>cellar-app</module>
     </modules>
 
+    <distributionManagement>
+        <repository>
+            <id>github-cellar</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/jlengrand/cellar</url>
+        </repository>
+    </distributionManagement>
 
 </project>
