@@ -117,7 +117,7 @@
 
     <distributionManagement>
         <repository>
-            <id>github-cellar</id>
+            <id>github</id>
             <name>GitHub Packages</name>
             <url>https://maven.pkg.github.com/jlengrand/cellar</url>
         </repository>
