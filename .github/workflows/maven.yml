@@ -21,7 +21,7 @@ jobs:
         run: mvn -B package
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: mkdir staging && cp cellar-app/target/cellar-app.jar staging && cp cellar-app/target/libs staging
+      - run: mkdir staging && cp cellar-app/target/cellar-app.jar staging && cp -r cellar-app/target/libs staging
       - uses: actions/upload-artifact@v2
         with:
           name: Package
