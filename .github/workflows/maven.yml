@@ -18,7 +18,7 @@ jobs:
           servers: '[{"id": "github", "username": "jlengrand", "password": "${GITHUB_TOKEN}"}]'
           repositories: '[{ "id": "central2", "url": "https://repo1.maven.org/maven2" }, { "id": "github", "url": "https://maven.pkg.github.com/jlengrand/cellar-driver" }]'
       - name: Build with Maven
-        run: mvn -B deploy #mvn -B package --file pom.xml
+        run: cat ~/.m2/settings.cml; mvn -B deploy #mvn -B package --file pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: mkdir staging && cp cellar-app/target/*-with-dependencies.jar staging
