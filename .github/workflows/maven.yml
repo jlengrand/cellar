@@ -17,7 +17,7 @@ jobs:
         env:
           PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
-          servers: '[{"id": "github", "username": "${{ secrets.GITHUB_USERNAME }}", "password": "${{ secrets.GITHUB_PASSWORD }}"}]'
+          servers: '[{"id": "github", "username": "jlengrand", "password": "${{ secrets.GITHUB_TOKEN }}"}]'
           repositories: '[{ "id": "central2", "url": "https://repo1.maven.org/maven2" }, { "id": "github", "url": "https://maven.pkg.github.com/jlengrand/cellar-driver" }]'
       - name: Build with Maven
         run: cat ~/.m2/settings.xml; mvn -B deploy #mvn -B package --file pom.xml
