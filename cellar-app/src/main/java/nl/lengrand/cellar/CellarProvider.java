@@ -1,6 +1,4 @@
-package nl.lengrand;
-
-import nl.lengrand.cellar.Dht11Driver;
+package nl.lengrand.cellar;
 
 import javax.enterprise.context.ApplicationScoped;
 

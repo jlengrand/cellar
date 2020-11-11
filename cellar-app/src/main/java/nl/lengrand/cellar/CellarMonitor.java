@@ -1,8 +1,11 @@
-package nl.lengrand;
+package nl.lengrand.cellar;
 
-import nl.lengrand.faunadb.SensorApi;
+import nl.lengrand.cellar.faunadb.SensorApi;
 
-import java.util.concurrent.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 public class CellarMonitor {
 

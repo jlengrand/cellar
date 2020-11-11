@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package nl.lengrand;
+package nl.lengrand.cellar;
 
 import java.util.concurrent.atomic.AtomicReference;
 

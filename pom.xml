@@ -7,7 +7,7 @@
     <groupId>nl.lengrand</groupId>
     <artifactId>cellar</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.3.0</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -18,5 +18,12 @@
         <module>cellar-app</module>
     </modules>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/jlengrand/cellar</url>
+        </repository>
+    </distributionManagement>
 
 </project>

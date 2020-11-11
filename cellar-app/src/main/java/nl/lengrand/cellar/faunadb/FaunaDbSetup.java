@@ -1,11 +1,11 @@
-package nl.lengrand.faunadb;
+package nl.lengrand.cellar.faunadb;
 import com.faunadb.client.FaunaClient;
 import com.faunadb.client.types.Value;
 
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
-import static nl.lengrand.faunadb.Connection.*;
+import static nl.lengrand.cellar.faunadb.Connection.*;
 
 
 /*

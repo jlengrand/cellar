@@ -1,15 +1,15 @@
-package nl.lengrand.faunadb;
+package nl.lengrand.cellar.faunadb;
 
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
-import nl.lengrand.SensorValue;
+import nl.lengrand.cellar.SensorValue;
 
 import java.time.Instant;
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
 import static com.faunadb.client.query.Language.Obj;
-import static nl.lengrand.faunadb.Connection.*;
+import static nl.lengrand.cellar.faunadb.Connection.*;
 
 public class SensorApi {
 

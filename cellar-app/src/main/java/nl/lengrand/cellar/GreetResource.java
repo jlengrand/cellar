@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package nl.lengrand;
+package nl.lengrand.cellar;
 
 import java.util.Collections;
 
