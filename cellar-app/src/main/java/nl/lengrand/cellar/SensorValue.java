@@ -1,4 +1,4 @@
-package nl.lengrand;
+package nl.lengrand.cellar;
 
 public class SensorValue {
 

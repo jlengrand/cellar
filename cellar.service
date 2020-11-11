@@ -1,0 +1,15 @@
+[Unit]
+Description=Cellar Monitoring System
+[Service]
+User=pi
+WorkingDirectory=/home/pi
+ExecStart=/home/pi/projects/cellar-dist/cellar.sh start
+ExecStop=/home/pi/projects/cellar-dist/cellar.sh stop
+ExecReload=/home/pi/projects/cellar-dist/cellar.sh restart
+
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

@@ -1,6 +1,5 @@
-package nl.lengrand;
+package nl.lengrand.cellar;
 
-import nl.lengrand.cellar.Dht11Driver;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 import javax.enterprise.context.ApplicationScoped;

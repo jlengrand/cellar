@@ -1,4 +1,4 @@
-package nl.lengrand;
+package nl.lengrand.cellar;
 
 
 import javax.enterprise.context.RequestScoped;

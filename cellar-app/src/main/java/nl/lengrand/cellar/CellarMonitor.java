@@ -1,6 +1,6 @@
-package nl.lengrand;
+package nl.lengrand.cellar;
 
-import nl.lengrand.faunadb.SensorApi;
+import nl.lengrand.cellar.faunadb.SensorApi;
 
 import java.util.concurrent.*;
 

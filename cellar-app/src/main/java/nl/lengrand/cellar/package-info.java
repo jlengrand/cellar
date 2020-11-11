@@ -17,4 +17,4 @@
 /**
  * Quickstart MicroProfile example.
  */
-package nl.lengrand;
+package nl.lengrand.cellar;
