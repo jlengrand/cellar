@@ -2,6 +2,7 @@ package nl.lengrand.cellar.store;
 
 import nl.lengrand.cellar.CellarProvider;
 import nl.lengrand.cellar.store.faunadb.FaunaSensorApi;
+import nl.lengrand.cellar.store.influxdb.InfluxDbSensorApi;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -15,7 +16,7 @@ public class CellarMonitor {
 
     private static final long START = 0;
     private static final long SPAN = 30;
-    private static final TimeUnit UNIT = TimeUnit.MINUTES;
+    private static final TimeUnit UNIT = TimeUnit.SECONDS;
 
     private ScheduledFuture monitorHandle;
 

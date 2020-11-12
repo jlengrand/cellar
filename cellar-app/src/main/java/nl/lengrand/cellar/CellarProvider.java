@@ -22,6 +22,7 @@ public class CellarProvider {
         while (noSensorData(values) && counter < N_TRIES);
 
         return new SensorValue(values);
+
     }
 
     private boolean noSensorData(float[] values) {
