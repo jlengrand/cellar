@@ -1,6 +1,8 @@
 package nl.lengrand.cellar;
 
 
+import nl.lengrand.cellar.store.SensorValue;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.json.Json;

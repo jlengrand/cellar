@@ -1,5 +1,7 @@
 package nl.lengrand.cellar;
 
+import nl.lengrand.cellar.store.SensorValue;
+
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped

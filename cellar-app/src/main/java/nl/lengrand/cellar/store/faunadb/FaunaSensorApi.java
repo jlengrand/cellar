@@ -2,10 +2,9 @@ package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
-import nl.lengrand.cellar.SensorValue;
+import nl.lengrand.cellar.store.SensorValue;
 import nl.lengrand.cellar.store.SensorApi;
 
-import java.time.Instant;
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
@@ -31,7 +30,7 @@ public class FaunaSensorApi implements SensorApi {
                                     Obj( "temperature", Language.Value(value.getTemperature()),
                                             "humidity", Language.Value(value.getHumidity()) ,
                                             "reading", Language.Value(value.getReading()),
-                                            "timestamp", Language.Value(Instant.now())
+                                            "timestamp", Language.Value(value.getTimestamp())
                                     )
                             )
                     )

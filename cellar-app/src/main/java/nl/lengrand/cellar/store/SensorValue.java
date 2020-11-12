@@ -1,4 +1,6 @@
-package nl.lengrand.cellar;
+package nl.lengrand.cellar.store;
+
+import java.time.Instant;
 
 public class SensorValue {
 
@@ -9,8 +11,10 @@ public class SensorValue {
     private READING reading;
     private float temperature;
     private float humidity;
+    private Instant timestamp;
 
     public SensorValue(float[] values){
+        this.timestamp = Instant.now();
         if(values[0] == 0 && values[1] == 0){
             this.reading = READING.ERROR;
             this.temperature = 0;
@@ -34,4 +38,6 @@ public class SensorValue {
     public float getHumidity() {
         return humidity;
     }
+
+    public Instant getTimestamp() { return timestamp; }
 }
