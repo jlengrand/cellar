@@ -3,6 +3,7 @@ package nl.lengrand.cellar.store.faunadb;
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
 import nl.lengrand.cellar.SensorValue;
+import nl.lengrand.cellar.store.SensorApi;
 
 import java.time.Instant;
 import java.util.concurrent.ExecutionException;
@@ -21,16 +22,15 @@ public class FaunaSensorApi implements SensorApi {
     }
 
     @Override
-    public void add(SensorValue values) {
-        Value addDataResult = null;
+    public void add(SensorValue value) {
         try {
-            addDataResult = connection.getClient().query(
+            Value addDataResult = connection.getClient().query(
                     Create(
                             Collection(Language.Value(COLLECTION_NAME)),
                             Obj("data",
-                                    Obj( "temperature", Language.Value(values.getTemperature()),
-                                            "humidity", Language.Value(values.getHumidity()) ,
-                                            "reading", Language.Value(values.getReading()),
+                                    Obj( "temperature", Language.Value(value.getTemperature()),
+                                            "humidity", Language.Value(value.getHumidity()) ,
+                                            "reading", Language.Value(value.getReading()),
                                             "timestamp", Language.Value(Instant.now())
                                     )
                             )

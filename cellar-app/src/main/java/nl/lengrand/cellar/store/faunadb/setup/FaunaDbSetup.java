@@ -1,6 +1,8 @@
-package nl.lengrand.cellar.store.faunadb;
+package nl.lengrand.cellar.store.faunadb.setup;
 import com.faunadb.client.FaunaClient;
 import com.faunadb.client.types.Value;
+import nl.lengrand.cellar.store.faunadb.Connection;
+import nl.lengrand.cellar.store.faunadb.ConnectionException;
 
 import java.util.concurrent.ExecutionException;
 

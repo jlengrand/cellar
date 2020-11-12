@@ -19,13 +19,6 @@ public class Connection {
 
     private FaunaClient client;
 
-    public Connection(){
-    }
-
-    private boolean isInit(){
-        return client != null;
-    }
-
     public void init(){
         try {
             this.client = createConnection();

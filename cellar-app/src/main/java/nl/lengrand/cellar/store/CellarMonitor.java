@@ -2,7 +2,6 @@ package nl.lengrand.cellar.store;
 
 import nl.lengrand.cellar.CellarProvider;
 import nl.lengrand.cellar.store.faunadb.FaunaSensorApi;
-import nl.lengrand.cellar.store.faunadb.SensorApi;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
