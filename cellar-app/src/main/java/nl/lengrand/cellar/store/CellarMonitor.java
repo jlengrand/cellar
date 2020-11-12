@@ -1,6 +1,8 @@
-package nl.lengrand.cellar;
+package nl.lengrand.cellar.store;
 
-import nl.lengrand.cellar.faunadb.SensorApi;
+import nl.lengrand.cellar.CellarProvider;
+import nl.lengrand.cellar.store.faunadb.FaunaSensorApi;
+import nl.lengrand.cellar.store.faunadb.SensorApi;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -19,9 +21,9 @@ public class CellarMonitor {
     private ScheduledFuture monitorHandle;
 
     private CellarProvider provider = new CellarProvider();
-    private SensorApi faunaApi = new SensorApi();
+    private SensorApi sensorApi = new FaunaSensorApi();
 
-    final Runnable monitoring = () -> { faunaApi.add(provider.getSensorValues()); };
+    final Runnable monitoring = () -> { sensorApi.add(provider.getSensorValues()); };
 
     public void startMonitoring(){
         monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, UNIT);

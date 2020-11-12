@@ -1,4 +1,4 @@
-package nl.lengrand.cellar.faunadb;
+package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.FaunaClient;
 import com.faunadb.client.query.Language;

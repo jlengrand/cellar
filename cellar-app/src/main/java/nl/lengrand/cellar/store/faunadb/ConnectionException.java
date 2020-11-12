@@ -1,4 +1,4 @@
-package nl.lengrand.cellar.faunadb;
+package nl.lengrand.cellar.store.faunadb;
 
 public class ConnectionException extends Exception {
     public ConnectionException(String errorMessage) {

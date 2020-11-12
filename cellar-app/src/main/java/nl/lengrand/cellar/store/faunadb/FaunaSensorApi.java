@@ -1,4 +1,4 @@
-package nl.lengrand.cellar.faunadb;
+package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
@@ -9,17 +9,18 @@ import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
 import static com.faunadb.client.query.Language.Obj;
-import static nl.lengrand.cellar.faunadb.Connection.*;
+import static nl.lengrand.cellar.store.faunadb.Connection.*;
 
-public class SensorApi {
+public class FaunaSensorApi implements SensorApi {
 
     private Connection connection;
 
-    public SensorApi(){
+    public FaunaSensorApi(){
         this.connection = new Connection();
         connection.init();
     }
 
+    @Override
     public void add(SensorValue values) {
         Value addDataResult = null;
         try {

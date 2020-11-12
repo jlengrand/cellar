@@ -1,6 +1,7 @@
 package nl.lengrand.cellar;
 
 import io.helidon.microprofile.server.Server;
+import nl.lengrand.cellar.store.CellarMonitoring;
 
 import java.io.IOException;
 
