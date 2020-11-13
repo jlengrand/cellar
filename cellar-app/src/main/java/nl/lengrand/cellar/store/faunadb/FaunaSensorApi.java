@@ -1,36 +1,36 @@
-package nl.lengrand.cellar.faunadb;
+package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
-import nl.lengrand.cellar.SensorValue;
+import nl.lengrand.cellar.store.SensorValue;
+import nl.lengrand.cellar.store.SensorApi;
 
-import java.time.Instant;
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
 import static com.faunadb.client.query.Language.Obj;
-import static nl.lengrand.cellar.faunadb.Connection.*;
+import static nl.lengrand.cellar.store.faunadb.Connection.*;
 
-public class SensorApi {
+public class FaunaSensorApi implements SensorApi {
 
     private Connection connection;
 
-    public SensorApi(){
+    public FaunaSensorApi(){
         this.connection = new Connection();
         connection.init();
     }
 
-    public void add(SensorValue values) {
-        Value addDataResult = null;
+    @Override
+    public void add(SensorValue value) {
         try {
-            addDataResult = connection.getClient().query(
+            Value addDataResult = connection.getClient().query(
                     Create(
                             Collection(Language.Value(COLLECTION_NAME)),
                             Obj("data",
-                                    Obj( "temperature", Language.Value(values.getTemperature()),
-                                            "humidity", Language.Value(values.getHumidity()) ,
-                                            "reading", Language.Value(values.getReading()),
-                                            "timestamp", Language.Value(Instant.now())
+                                    Obj( "temperature", Language.Value(value.getTemperature()),
+                                            "humidity", Language.Value(value.getHumidity()) ,
+                                            "reading", Language.Value(value.getReading()),
+                                            "timestamp", Language.Value(value.getTimestamp())
                                     )
                             )
                     )

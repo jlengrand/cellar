@@ -1,5 +1,7 @@
 package nl.lengrand.cellar;
 
+import nl.lengrand.cellar.store.SensorValue;
+
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
@@ -20,6 +22,7 @@ public class CellarProvider {
         while (noSensorData(values) && counter < N_TRIES);
 
         return new SensorValue(values);
+
     }
 
     private boolean noSensorData(float[] values) {

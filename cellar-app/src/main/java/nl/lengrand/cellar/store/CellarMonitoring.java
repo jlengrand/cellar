@@ -1,4 +1,4 @@
-package nl.lengrand.cellar;
+package nl.lengrand.cellar.store;
 
 import javax.enterprise.context.ApplicationScoped;
 

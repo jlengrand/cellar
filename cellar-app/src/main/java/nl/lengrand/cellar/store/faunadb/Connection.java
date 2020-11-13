@@ -1,4 +1,4 @@
-package nl.lengrand.cellar.faunadb;
+package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.FaunaClient;
 import com.faunadb.client.query.Language;
@@ -18,13 +18,6 @@ public class Connection {
     public final static String INDEX_ALL_NAME = "all_sensors";
 
     private FaunaClient client;
-
-    public Connection(){
-    }
-
-    private boolean isInit(){
-        return client != null;
-    }
 
     public void init(){
         try {
