@@ -13,7 +13,7 @@
     <groupId>nl.lengrand</groupId>
     <artifactId>cellar-app</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.3.0</version>
+    <version>1.5.0</version>
 
     <properties>
         <mainClass>nl.lengrand.cellar.Main</mainClass>
