@@ -1,8 +1,7 @@
 package nl.lengrand.cellar.store;
 
 import nl.lengrand.cellar.driver.DataDriver;
-import nl.lengrand.cellar.driver.Dht11DataDriver;
-
+import nl.lengrand.cellar.driver.DataDriverProvider;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.concurrent.Executors;
@@ -22,10 +21,10 @@ public class CellarMonitor {
 
     private ScheduledFuture monitorHandle;
 
-    @Inject
+    @Inject @DataDriverProvider.SpecificDataDriver
     private DataDriver dataDriver;
 
-    @Inject
+    @Inject @SensorApiProvider.SpecificSensorApi
     private SensorApi sensorApi;
 
     final Runnable monitoring = () -> { sensorApi.add(dataDriver.getSensorValues()); };

@@ -3,6 +3,10 @@ package nl.lengrand.cellar.store.influxdb;
 import com.influxdb.client.WriteApi;
 import nl.lengrand.cellar.store.SensorApi;
 import nl.lengrand.cellar.store.SensorValue;
+
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class InfluxDbSensorApi implements SensorApi {
 
     private Connection connection;

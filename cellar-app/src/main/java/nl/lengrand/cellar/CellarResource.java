@@ -2,6 +2,7 @@ package nl.lengrand.cellar;
 
 
 import nl.lengrand.cellar.driver.DataDriver;
+import nl.lengrand.cellar.driver.DataDriverProvider;
 import nl.lengrand.cellar.driver.Dht11DataDriver;
 import nl.lengrand.cellar.store.SensorValue;
 
@@ -22,7 +23,7 @@ public class CellarResource {
 
     private static final JsonBuilderFactory JSON = Json.createBuilderFactory(Collections.emptyMap());
 
-    @Inject
+    @Inject @DataDriverProvider.SpecificDataDriver
     private DataDriver dataDriver;
 
     @GET

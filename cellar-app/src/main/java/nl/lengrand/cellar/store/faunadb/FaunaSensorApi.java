@@ -7,13 +7,13 @@ import nl.lengrand.cellar.store.SensorValue;
 import nl.lengrand.cellar.store.SensorApi;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Typed;
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
 import static com.faunadb.client.query.Language.Obj;
 import static nl.lengrand.cellar.store.faunadb.Connection.*;
 
+@ApplicationScoped
 public class FaunaSensorApi implements SensorApi {
 
     private Connection connection;
