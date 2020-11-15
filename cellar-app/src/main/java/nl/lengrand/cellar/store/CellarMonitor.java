@@ -14,13 +14,15 @@ import java.util.concurrent.TimeUnit;
 @ApplicationScoped
 public class CellarMonitor {
 
+    private ScheduledFuture monitorHandle;
+
     private static final int THREADS = 1;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(THREADS);
 
     private static final long START = 0;
-    private static final long SPAN = 30;
 
-    private ScheduledFuture monitorHandle;
+    @ConfigProperty(name = "monitor.time.span", defaultValue = "15")
+    private long span;
 
     @Inject
     private TimeUnit timeUnit;
@@ -34,7 +36,7 @@ public class CellarMonitor {
     final Runnable monitoring = () -> { sensorApi.add(dataDriver.getSensorValues()); };
 
     public void startMonitoring(){
-        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, timeUnit);
+        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, span, timeUnit);
     }
 
     public void stopMonitoring(){
