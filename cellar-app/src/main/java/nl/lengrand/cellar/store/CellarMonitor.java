@@ -1,32 +1,45 @@
 package nl.lengrand.cellar.store;
 
-import nl.lengrand.cellar.CellarProvider;
-import nl.lengrand.cellar.store.faunadb.FaunaSensorApi;
-import nl.lengrand.cellar.store.influxdb.InfluxDbSensorApi;
+import nl.lengrand.cellar.driver.DataDriver;
+import nl.lengrand.cellar.driver.DataDriverProvider;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+@ApplicationScoped
 public class CellarMonitor {
+
+    private ScheduledFuture monitorHandle;
 
     private static final int THREADS = 1;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(THREADS);
 
     private static final long START = 0;
-    private static final long SPAN = 30;
-    private static final TimeUnit UNIT = TimeUnit.SECONDS;
 
-    private ScheduledFuture monitorHandle;
+    @Inject
+    @ConfigProperty(name = "monitor.time.span", defaultValue = "15")
+    private volatile long span;
 
-    private CellarProvider provider = new CellarProvider();
-    private SensorApi sensorApi = new FaunaSensorApi();
+    @Inject
+    private TimeUnit timeUnit;
 
-    final Runnable monitoring = () -> { sensorApi.add(provider.getSensorValues()); };
+    @Inject @DataDriverProvider.SpecificDataDriver
+    private DataDriver dataDriver;
+
+    @Inject @SensorApiProvider.SpecificSensorApi
+    private SensorApi sensorApi;
+
+    final Runnable monitoring = () -> {
+        sensorApi.add(dataDriver.getSensorValues());
+    };
 
     public void startMonitoring(){
-        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, UNIT);
+        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, span, timeUnit);
     }
 
     public void stopMonitoring(){

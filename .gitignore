@@ -59,3 +59,7 @@ local.properties
 /cellar-app/target/
 /cellar-driver/target/
 /.idea/
+/cellar-influxdb/gradle/wrapper/gradle-wrapper.jar
+/cellar-influxdb/gradle/wrapper/gradle-wrapper.properties
+/cellar-influxdb/gradlew
+/cellar-influxdb/gradlew.bat

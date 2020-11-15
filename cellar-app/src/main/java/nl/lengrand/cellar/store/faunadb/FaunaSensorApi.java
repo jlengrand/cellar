@@ -2,16 +2,24 @@ package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
+import nl.lengrand.cellar.store.SensorApiProvider;
 import nl.lengrand.cellar.store.SensorValue;
 import nl.lengrand.cellar.store.SensorApi;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
 import static com.faunadb.client.query.Language.Obj;
-import static nl.lengrand.cellar.store.faunadb.Connection.*;
 
+@ApplicationScoped
 public class FaunaSensorApi implements SensorApi {
+
+    @Inject
+    @ConfigProperty(name = "sensor.api.fauna.collection", defaultValue = "sensors")
+    private String collection_name = "sensors";
 
     private Connection connection;
 
@@ -25,7 +33,7 @@ public class FaunaSensorApi implements SensorApi {
         try {
             Value addDataResult = connection.getClient().query(
                     Create(
-                            Collection(Language.Value(COLLECTION_NAME)),
+                            Collection(Language.Value(collection_name)),
                             Obj("data",
                                     Obj( "temperature", Language.Value(value.getTemperature()),
                                             "humidity", Language.Value(value.getHumidity()) ,
@@ -35,7 +43,7 @@ public class FaunaSensorApi implements SensorApi {
                             )
                     )
             ).get();
-            System.out.println("Added sensor data to collection " + COLLECTION_NAME + ":\n " + addDataResult + "\n");
+            System.out.println("Added sensor data to collection " + collection_name + ":\n " + addDataResult + "\n");
         } catch (InterruptedException | ExecutionException e) {
             System.out.println("Failing to upload data! Restarting Connection");
             e.printStackTrace();
