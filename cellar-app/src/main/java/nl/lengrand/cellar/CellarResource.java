@@ -1,6 +1,8 @@
 package nl.lengrand.cellar;
 
 
+import nl.lengrand.cellar.driver.DataDriver;
+import nl.lengrand.cellar.driver.Dht11DataDriver;
 import nl.lengrand.cellar.store.SensorValue;
 
 import javax.enterprise.context.RequestScoped;
@@ -19,17 +21,14 @@ import java.util.Collections;
 public class CellarResource {
 
     private static final JsonBuilderFactory JSON = Json.createBuilderFactory(Collections.emptyMap());
-    private final CellarProvider cellarProvider;
 
     @Inject
-    public CellarResource(CellarProvider cellarConfig){
-        this.cellarProvider = cellarConfig;
-    }
+    private DataDriver dataDriver;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public JsonObject getSensorValues(){
-        return createResponse(cellarProvider.getSensorValues());
+        return createResponse(dataDriver.getSensorValues());
     }
 
     private JsonObject createResponse(SensorValue value) {

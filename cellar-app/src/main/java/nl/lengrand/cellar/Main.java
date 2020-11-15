@@ -1,22 +1,15 @@
 package nl.lengrand.cellar;
 
 import io.helidon.microprofile.server.Server;
-import nl.lengrand.cellar.store.CellarMonitoring;
 
 import java.io.IOException;
 
 public class Main {
 
-    private Main() { }
-
-    public static void main(final String[] args) throws IOException {
-        Server server = startServer();
-
-        CellarMonitoring monitoring = new CellarMonitoring();
-        monitoring.start();
+    private Main() {
     }
 
-    static Server startServer() {
-        return Server.create().start();
+    public static void main(final String[] args) throws IOException {
+        Server.create().start();
     }
 }

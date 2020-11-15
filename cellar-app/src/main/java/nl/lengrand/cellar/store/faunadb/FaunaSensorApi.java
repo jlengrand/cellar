@@ -2,9 +2,12 @@ package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
+import nl.lengrand.cellar.store.SensorApiProvider;
 import nl.lengrand.cellar.store.SensorValue;
 import nl.lengrand.cellar.store.SensorApi;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Typed;
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;

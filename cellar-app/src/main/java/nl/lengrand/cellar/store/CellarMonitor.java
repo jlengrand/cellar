@@ -1,14 +1,16 @@
 package nl.lengrand.cellar.store;
 
-import nl.lengrand.cellar.CellarProvider;
-import nl.lengrand.cellar.store.faunadb.FaunaSensorApi;
-import nl.lengrand.cellar.store.influxdb.InfluxDbSensorApi;
+import nl.lengrand.cellar.driver.DataDriver;
+import nl.lengrand.cellar.driver.Dht11DataDriver;
 
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+@ApplicationScoped
 public class CellarMonitor {
 
     private static final int THREADS = 1;
@@ -20,10 +22,13 @@ public class CellarMonitor {
 
     private ScheduledFuture monitorHandle;
 
-    private CellarProvider provider = new CellarProvider();
-    private SensorApi sensorApi = new FaunaSensorApi();
+    @Inject
+    private DataDriver dataDriver;
 
-    final Runnable monitoring = () -> { sensorApi.add(provider.getSensorValues()); };
+    @Inject
+    private SensorApi sensorApi;
+
+    final Runnable monitoring = () -> { sensorApi.add(dataDriver.getSensorValues()); };
 
     public void startMonitoring(){
         monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, UNIT);
