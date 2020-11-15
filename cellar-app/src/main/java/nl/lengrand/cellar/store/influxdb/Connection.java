@@ -2,24 +2,38 @@ package nl.lengrand.cellar.store.influxdb;
 
 import com.influxdb.client.InfluxDBClient;
 import com.influxdb.client.InfluxDBClientFactory;
-import com.influxdb.client.domain.WritePrecision;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
+@ApplicationScoped
 public class Connection {
 
-    private static final String API_LOCATION = "http://localhost:8086";
-    private static final String API_KEY_NAME = "INFLUX_CELLAR_KEY";
-    private static final String ORG_NAME = "cellar";
-    private static final String BUCKET_NAME = "cellar-data";
-    protected static final WritePrecision PRECISION = WritePrecision.S;
+    @Inject
+    @ConfigProperty(name = "sensor.api.influx.location", defaultValue = "http://localhost:8086")
+    private String api_location;
+
+    @Inject
+    @ConfigProperty(name = "sensor.api.influx.key")
+    private String api_key;
+
+    @Inject
+    @ConfigProperty(name = "sensor.api.influx.organization", defaultValue = "cellar")
+    private String organization;
+
+    @Inject
+    @ConfigProperty(name = "sensor.api.influx.bucket", defaultValue = "cellar-data")
+    private String bucket;
+
 
     private InfluxDBClient client;
 
-    public Connection(){
-        client = InfluxDBClientFactory.create(API_LOCATION, getKey().toCharArray(), ORG_NAME, BUCKET_NAME);
-    }
-
-    private String getKey() {
-        return System.getenv(API_KEY_NAME);
+    @PostConstruct
+    public void initConnection(){
+        if(api_key == null) System.out.println("No value found for influx API Key");
+        client = InfluxDBClientFactory.create(api_location, api_key.toCharArray(), organization, bucket);
     }
 
     public InfluxDBClient getClient() {

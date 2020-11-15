@@ -21,8 +21,9 @@ public class CellarMonitor {
 
     private static final long START = 0;
 
+    @Inject
     @ConfigProperty(name = "monitor.time.span", defaultValue = "15")
-    private long span;
+    private volatile long span;
 
     @Inject
     private TimeUnit timeUnit;
@@ -33,7 +34,9 @@ public class CellarMonitor {
     @Inject @SensorApiProvider.SpecificSensorApi
     private SensorApi sensorApi;
 
-    final Runnable monitoring = () -> { sensorApi.add(dataDriver.getSensorValues()); };
+    final Runnable monitoring = () -> {
+        sensorApi.add(dataDriver.getSensorValues());
+    };
 
     public void startMonitoring(){
         monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, span, timeUnit);

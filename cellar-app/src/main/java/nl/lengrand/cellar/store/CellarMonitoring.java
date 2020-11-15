@@ -14,12 +14,8 @@ public class CellarMonitoring {
     @ConfigProperty(name = "monitoring.enabled", defaultValue = "true")
     private volatile boolean monitoringEnabled;
 
-    private final CellarMonitor monitor;
-
     @Inject
-    public CellarMonitoring(CellarMonitor monitor) {
-        this.monitor = monitor;
-    }
+    private CellarMonitor monitor;
 
     public void start(){
         if (monitoringEnabled) {
