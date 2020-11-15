@@ -2,6 +2,8 @@ package nl.lengrand.cellar.store;
 
 import nl.lengrand.cellar.driver.DataDriver;
 import nl.lengrand.cellar.driver.DataDriverProvider;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.concurrent.Executors;
@@ -17,9 +19,11 @@ public class CellarMonitor {
 
     private static final long START = 0;
     private static final long SPAN = 30;
-    private static final TimeUnit UNIT = TimeUnit.SECONDS;
 
     private ScheduledFuture monitorHandle;
+
+    @Inject
+    private TimeUnit timeUnit;
 
     @Inject @DataDriverProvider.SpecificDataDriver
     private DataDriver dataDriver;
@@ -30,7 +34,7 @@ public class CellarMonitor {
     final Runnable monitoring = () -> { sensorApi.add(dataDriver.getSensorValues()); };
 
     public void startMonitoring(){
-        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, UNIT);
+        monitorHandle = scheduler.scheduleAtFixedRate(monitoring, START, SPAN, timeUnit);
     }
 
     public void stopMonitoring(){

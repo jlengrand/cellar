@@ -18,7 +18,7 @@ public class SensorApiProvider {
 
     @Qualifier
     @Retention(RetentionPolicy.RUNTIME)
-    @Target({ElementType.LOCAL_VARIABLE, ElementType.FIELD, ElementType.METHOD})
+    @Target({ElementType.LOCAL_VARIABLE, ElementType.FIELD, ElementType.METHOD, ElementType.CONSTRUCTOR})
     public @interface SpecificSensorApi{}
 
     @Inject
