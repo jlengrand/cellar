@@ -15,11 +15,11 @@ public class SensorValue {
     @Column(tag = true)
     private READING reading;
 
-    @Column(name = "temperature")
-    private float temperature;
+    @Column
+    private double temperature;
 
-    @Column(name = "humidity")
-    private float humidity;
+    @Column
+    private double humidity;
 
     @Column(timestamp = true)
     private Instant timestamp;
@@ -42,11 +42,11 @@ public class SensorValue {
         return reading;
     }
 
-    public float getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public float getHumidity() {
+    public double getHumidity() {
         return humidity;
     }
 
