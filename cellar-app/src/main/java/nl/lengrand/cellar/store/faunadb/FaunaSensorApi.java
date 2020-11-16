@@ -2,7 +2,6 @@ package nl.lengrand.cellar.store.faunadb;
 
 import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
-import nl.lengrand.cellar.store.SensorApiProvider;
 import nl.lengrand.cellar.store.SensorValue;
 import nl.lengrand.cellar.store.SensorApi;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
@@ -21,12 +20,8 @@ public class FaunaSensorApi implements SensorApi {
     @ConfigProperty(name = "sensor.api.fauna.collection", defaultValue = "sensors")
     private String collection_name = "sensors";
 
+    @Inject
     private Connection connection;
-
-    public FaunaSensorApi(){
-        this.connection = new Connection();
-        connection.init();
-    }
 
     @Override
     public void add(SensorValue value) {

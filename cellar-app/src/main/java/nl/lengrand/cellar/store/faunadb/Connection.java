@@ -5,11 +5,14 @@ import com.faunadb.client.query.Language;
 import com.faunadb.client.types.Value;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.concurrent.ExecutionException;
 
 import static com.faunadb.client.query.Language.*;
 
+@ApplicationScoped
 public class Connection {
 
     @Inject
@@ -22,6 +25,7 @@ public class Connection {
 
     private FaunaClient client;
 
+    @PostConstruct
     public void init(){
         try {
             this.client = createConnection();

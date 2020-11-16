@@ -15,7 +15,6 @@ import static nl.lengrand.cellar.store.faunadb.Connection.*;
  */
 public class FaunaDbSetup {
 
-
     public final static String DB_NAME = "cellar";
     public final static String COLLECTION_NAME = "sensors";
     public final static String UPDATE_DEVICE_NAME = "cellar_00";

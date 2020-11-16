@@ -39,3 +39,13 @@ Stack Overflow Question : https://iot.stackexchange.com/questions/4662/in-what-f
 # To run : 
 
 $ mvn clean package
+
+Location of service 
+
+```
+$ cat /etc/systemd/system/cellar.service
+$ cp cellar.service /etc/systemd/system/cellar.service
+$ systemctl daemon-reload # if modified
+$ chmod 777 /etc/systemd/system/cellar.service
+$ journalctl -u cellar.service -f
+```

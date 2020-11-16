@@ -1,14 +1,13 @@
 #!/bin/sh
 SERVICE_NAME=cellar
-PATH_TO_JAR=/home/pi/projects/cellar-dist/cellar-app.jar
+PATH_TO_JAR=cellar-app.jar
 PID_PATH_NAME=/tmp/cellar.pid
-export MONITORING_ENABLED=true
 
 case $1 in
 start)
        echo "Starting $SERVICE_NAME ..."
   if [ ! -f $PID_PATH_NAME ]; then
-       /usr/bin/java -jar -Dmonitoring.enabled=true $PATH_TO_JAR
+       /usr/bin/java -jar $PATH_TO_JAR
        echo "$SERVICE_NAME started ..."
   else
        echo "$SERVICE_NAME is already running ..."
