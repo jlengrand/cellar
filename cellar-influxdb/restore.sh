@@ -1,0 +1,1 @@
+influx restore $BACKUP_NAME --token $CELLAR_ADMIN_TOKEN

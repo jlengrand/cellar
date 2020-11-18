@@ -1,0 +1,1 @@
+influx backup $BACKUP_NAME --token $CELLAR_ADMIN_TOKEN --host $CELLAR_HOST
