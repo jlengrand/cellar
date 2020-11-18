@@ -1,1 +1,1 @@
-FROM quay.io/influxdb/influxdb:2.0.0-rc
+FROM quay.io/influxdb/influxdb:v2.0.1
