@@ -1,10 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-influx backup $BACKUP_NAME --token $CELLAR_ADMIN_TOKEN --host $CELLAR_HOST
+BACKUP_NAME=$(date +'%d-%m-%Y-%H')
+echo "Creating $BACKUP_NAME.zip"
+
+cd /home/julien/backups
+influx backup $BACKUP_NAME --token $CELLAR_ADMIN_TOKEN
 zip -r $BACKUP_NAME.zip $BACKUP_NAME
-az storage blob upload \
-    --account-name "cellarbackupstorage" \
-    --container-name "cellar-backups" \
-    --name $BACKUP_NAME.zip \
-    --file $BACKUP_NAME.zip \
-    --auth-mode login
+rm -r $BACKUP_NAME
